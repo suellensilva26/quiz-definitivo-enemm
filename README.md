@@ -1,6 +1,13 @@
 # 🧠 Quiz Neurológico ENEM - NeuroHack
 
+[![Deploy Status](https://github.com/suellensilva26/quiz-definitivo-enemm/actions/workflows/deploy.yml/badge.svg)](https://github.com/suellensilva26/quiz-definitivo-enemm/actions)
+[![Live Demo](https://img.shields.io/badge/demo-online-success)](https://suellensilva26.github.io/quiz-definitivo-enemm/)
+
 Quiz interativo mobile-first que identifica o perfil neurológico de vestibulandos e gera urgência para compra do app NeuroHack ENEM.
+
+## 🌐 Site ao Vivo
+
+**[👉 Acesse o Quiz Aqui](https://suellensilva26.github.io/quiz-definitivo-enemm/)**
 
 ## 📋 Características
 
