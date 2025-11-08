@@ -1,0 +1,189 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "title": "Como foi seu 2024 de estudos?",
+      "visual": "📚",
+      "options": [
+        {
+          "text": "Estudei consistentemente o ano todo",
+          "points": 10
+        },
+        {
+          "text": "Estudei algumas vezes, mas faltou consistência",
+          "points": 25
+        },
+        {
+          "text": "Mais Netflix que livros, não vou mentir",
+          "points": 50
+        },
+        {
+          "text": "Procrastinação level máster - só desespero agora",
+          "points": 75
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "O que acontece quando você estuda?",
+      "visual": "🧠",
+      "options": [
+        {
+          "text": "Lembro de tudo perfeitamente",
+          "points": 10
+        },
+        {
+          "text": "Lembro algumas coisas, esqueço outras",
+          "points": 30
+        },
+        {
+          "text": "Estudo hoje, amanhã já esqueci metade",
+          "points": 60
+        },
+        {
+          "text": "Dá branco total na hora da prova",
+          "points": 80
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Como você se sente pensando no ENEM?",
+      "visual": "😰",
+      "options": [
+        {
+          "text": "Confiante e preparado",
+          "points": 5
+        },
+        {
+          "text": "Um pouco nervoso, mas ok",
+          "points": 20
+        },
+        {
+          "text": "Ansioso, mas ainda esperançoso",
+          "points": 45
+        },
+        {
+          "text": "Pânico total, não durmo direito",
+          "points": 70
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Quanto tempo você consegue focar estudando?",
+      "visual": "📱",
+      "options": [
+        {
+          "text": "3+ horas seguidas sem problemas",
+          "points": 5
+        },
+        {
+          "text": "1-2 horas com algumas pausas",
+          "points": 25
+        },
+        {
+          "text": "30 minutos, depois pego o celular",
+          "points": 55
+        },
+        {
+          "text": "5 minutos e já estou no TikTok",
+          "points": 85
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Você sabia que o ENEM repete padrões há 25 anos?",
+      "visual": "🔄",
+      "options": [
+        {
+          "text": "Sim, e uso isso a meu favor",
+          "points": 0
+        },
+        {
+          "text": "Já ouvi falar, mas não sei usar",
+          "points": 30
+        },
+        {
+          "text": "Primeira vez que escuto isso",
+          "points": 60
+        },
+        {
+          "text": "Que padrões? Cada prova não é diferente?",
+          "points": 90
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Qual seu método principal de estudo?",
+      "visual": "⚡",
+      "options": [
+        {
+          "text": "Sistema científico de repetição espaçada",
+          "points": 0
+        },
+        {
+          "text": "Cronograma organizado com revisões",
+          "points": 20
+        },
+        {
+          "text": "Leio e releio até 'grudar'",
+          "points": 50
+        },
+        {
+          "text": "Véspera da prova, desespero total",
+          "points": 80
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Como você se sente sobre a redação?",
+      "visual": "✍️",
+      "options": [
+        {
+          "text": "Domino completamente, sempre tiro notas altas",
+          "points": 0
+        },
+        {
+          "text": "Me viro bem, mas posso melhorar",
+          "points": 25
+        },
+        {
+          "text": "Escrevo alguma coisa, torço para passar",
+          "points": 55
+        },
+        {
+          "text": "Branco total, não sei nem começar",
+          "points": 85
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Quantos dias restam para o ENEM?",
+      "visual": "⏰",
+      "options": [
+        {
+          "text": "Mais de 30 dias",
+          "points": 10
+        },
+        {
+          "text": "Entre 15-30 dias",
+          "points": 30
+        },
+        {
+          "text": "Entre 5-15 dias",
+          "points": 60
+        },
+        {
+          "text": "Menos de 5 dias - DESESPERO!",
+          "points": 100
+        }
+      ]
+    }
+  ]
+}
+

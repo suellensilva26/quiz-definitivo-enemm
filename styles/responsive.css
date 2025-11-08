@@ -1,0 +1,155 @@
+/* ============================================
+   NEUROHACK QUIZ - RESPONSIVE
+   Mobile First Approach
+   ============================================ */
+
+/* ============================================
+   MOBILE (320px - 767px)
+   ============================================ */
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .question-title {
+        font-size: 20px;
+    }
+    
+    .option-btn {
+        padding: 16px 18px;
+        font-size: 16px;
+        min-height: 48px;
+    }
+    
+    .result-title {
+        font-size: 22px;
+    }
+    
+    .btn-primary,
+    .btn-cta {
+        padding: 16px 30px;
+        font-size: 16px;
+    }
+}
+
+/* ============================================
+   TABLET (768px+)
+   ============================================ */
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 480px;
+    }
+    
+    .screen.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .option-btn:hover {
+        transform: translateX(8px);
+    }
+    
+    .btn-primary:hover,
+    .btn-cta:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* ============================================
+   DESKTOP (1024px+)
+   ============================================ */
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 480px;
+    }
+    
+    .question-container {
+        padding: 40px 30px;
+    }
+    
+    .hero-section {
+        padding: 40px 0;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICES
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    .option-btn:active {
+        background: rgba(255, 215, 0, 0.3);
+        transform: scale(0.95);
+    }
+    
+    .btn-primary:active,
+    .btn-cta:active {
+        transform: scale(0.98);
+    }
+}
+
+/* ============================================
+   LANDSCAPE ORIENTATION
+   ============================================ */
+
+@media (orientation: landscape) and (max-height: 600px) {
+    .screen.active {
+        padding: 20px 0;
+    }
+    
+    .hero-section {
+        padding: 10px 0;
+    }
+    
+    .brain-icon {
+        font-size: 60px;
+        margin-bottom: 10px;
+    }
+    
+    .hero-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .screen {
+        display: none;
+    }
+    
+    #result-screen {
+        display: block;
+    }
+}
+

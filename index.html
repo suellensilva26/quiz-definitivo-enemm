@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiz Neurológico ENEM - Descubra Seu Risco de Reprovação">
+    <title>Quiz Neurológico ENEM - Descubra Seu Risco de Reprovação</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <!-- Tela de Captura de Dados -->
+    <div id="lead-capture-screen" class="screen active">
+        <div class="container">
+            <header class="quiz-header">
+                <div class="logo">
+                    <span class="logo-emoji">🧠</span>
+                    <span class="logo-text">NEUROHACK</span>
+                </div>
+                <p class="subtitle">Quiz Neurológico ENEM 2024</p>
+            </header>
+
+            <div class="lead-capture-section">
+                <div class="brain-icon pulse-animation">🧠</div>
+                <h1 class="hero-title">DESCUBRA SEU RISCO DE REPROVAÇÃO</h1>
+                <p class="hero-subtitle">Preencha seus dados para começar a análise gratuita</p>
+                
+                <form id="lead-form" class="lead-form">
+                    <div class="form-group">
+                        <label for="lead-name">Nome completo *</label>
+                        <input 
+                            type="text" 
+                            id="lead-name" 
+                            name="name" 
+                            placeholder="Digite seu nome completo"
+                            required
+                            autocomplete="name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lead-email">E-mail *</label>
+                        <input 
+                            type="email" 
+                            id="lead-email" 
+                            name="email" 
+                            placeholder="seu@email.com"
+                            required
+                            autocomplete="email"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lead-phone">WhatsApp *</label>
+                        <input 
+                            type="tel" 
+                            id="lead-phone" 
+                            name="phone" 
+                            placeholder="(00) 00000-0000"
+                            required
+                            autocomplete="tel"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lead-institution">Qual instituição/curso deseja? *</label>
+                        <input 
+                            type="text" 
+                            id="lead-institution" 
+                            name="institution" 
+                            placeholder="Ex: USP - Medicina"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-privacy">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lead-privacy" required>
+                            <span>Aceito receber informações sobre o NeuroHack ENEM</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="submit-lead-btn">
+                        INICIAR DIAGNÓSTICO GRATUITO
+                    </button>
+
+                    <p class="form-note">🔒 Seus dados estão seguros e não serão compartilhados</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela Inicial -->
+    <div id="start-screen" class="screen">
+        <div class="container">
+            <header class="quiz-header">
+                <div class="logo">
+                    <span class="logo-emoji">🧠</span>
+                    <span class="logo-text">NEUROHACK</span>
+                </div>
+                <p class="subtitle">Quiz Neurológico ENEM 2024</p>
+            </header>
+
+            <div class="hero-section">
+                <div class="brain-icon pulse-animation">🧠</div>
+                <h1 class="hero-title">DESCUBRA SEU RISCO DE REPROVAÇÃO</h1>
+                <p class="hero-subtitle">Análise neurológica em 2 minutos</p>
+                <div class="statistics">
+                    <span class="stat-text">📊 94,7% dos que fazem este teste são aprovados</span>
+                </div>
+                <button id="start-btn" class="btn-primary">
+                    INICIAR DIAGNÓSTICO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela do Quiz -->
+    <div id="quiz-screen" class="screen">
+        <div class="container">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <span id="progress-text" class="progress-text">1/8</span>
+            </div>
+
+            <div id="question-container" class="question-container">
+                <!-- Perguntas serão inseridas aqui via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela de Resultado -->
+    <div id="result-screen" class="screen">
+        <div class="container">
+            <div id="result-content" class="result-content">
+                <!-- Resultado será inserido aqui via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/tracking.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/lead-capture.js"></script>
+    <script src="js/results.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>
+

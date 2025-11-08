@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Leads - NeuroHack Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: #FFD700;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        button.secondary {
+            background: transparent;
+            border: 2px solid #FFD700;
+            color: #FFD700;
+        }
+
+        button.danger {
+            background: #FF6B6B;
+            color: #fff;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: rgba(255, 215, 0, 0.15);
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            color: #FFD700;
+            font-weight: bold;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #aaa;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #FFD700;
+        }
+
+        .timestamp {
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 NeuroHack Quiz - Leads Capturados</h1>
+        <p class="subtitle">Visualize e gerencie todos os leads coletados</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-leads">0</div>
+                <div class="stat-label">Total de Leads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="today-leads">0</div>
+                <div class="stat-label">Hoje</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="this-week-leads">0</div>
+                <div class="stat-label">Esta Semana</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button onclick="refreshLeads()">🔄 Atualizar</button>
+            <button onclick="exportToCSV()" class="secondary">📥 Exportar CSV</button>
+            <button onclick="exportToJSON()" class="secondary">📄 Exportar JSON</button>
+            <button onclick="clearAllLeads()" class="danger">🗑️ Limpar Todos</button>
+        </div>
+
+        <input 
+            type="text" 
+            class="search-box" 
+            id="search-input" 
+            placeholder="🔍 Buscar por nome, email, telefone ou instituição..."
+            onkeyup="filterLeads()"
+        >
+
+        <div id="leads-container">
+            <!-- Tabela será inserida aqui -->
+        </div>
+    </div>
+
+    <script>
+        let allLeads = [];
+
+        // Carregar leads ao abrir a página
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLeads();
+        });
+
+        // Carregar leads do localStorage
+        function loadLeads() {
+            try {
+                allLeads = JSON.parse(localStorage.getItem('neurohack_leads') || '[]');
+                displayLeads(allLeads);
+                updateStats();
+            } catch (error) {
+                console.error('Erro ao carregar leads:', error);
+                allLeads = [];
+                displayLeads([]);
+            }
+        }
+
+        // Exibir leads na tabela
+        function displayLeads(leads) {
+            const container = document.getElementById('leads-container');
+
+            if (leads.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <h2>Nenhum lead capturado ainda</h2>
+                        <p>Os leads que preencherem o formulário aparecerão aqui.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let tableHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Instituição</th>
+                            <th>Origem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            leads.forEach(lead => {
+                const date = new Date(lead.timestamp);
+                const formattedDate = date.toLocaleString('pt-BR');
+
+                tableHTML += `
+                    <tr>
+                        <td class="timestamp">${formattedDate}</td>
+                        <td><strong>${lead.name}</strong></td>
+                        <td>${lead.email}</td>
+                        <td>${lead.phone}</td>
+                        <td><span class="badge">${lead.institution}</span></td>
+                        <td class="timestamp">${lead.referrer || 'Direct'}</td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = tableHTML;
+        }
+
+        // Atualizar estatísticas
+        function updateStats() {
+            const total = allLeads.length;
+            document.getElementById('total-leads').textContent = total;
+
+            // Leads de hoje
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const todayLeads = allLeads.filter(lead => {
+                const leadDate = new Date(lead.timestamp);
+                leadDate.setHours(0, 0, 0, 0);
+                return leadDate.getTime() === today.getTime();
+            });
+            document.getElementById('today-leads').textContent = todayLeads.length;
+
+            // Leads desta semana
+            const weekAgo = new Date();
+            weekAgo.setDate(weekAgo.getDate() - 7);
+            const weekLeads = allLeads.filter(lead => {
+                const leadDate = new Date(lead.timestamp);
+                return leadDate >= weekAgo;
+            });
+            document.getElementById('this-week-leads').textContent = weekLeads.length;
+        }
+
+        // Filtrar leads
+        function filterLeads() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+            const filtered = allLeads.filter(lead => {
+                return (
+                    lead.name.toLowerCase().includes(searchTerm) ||
+                    lead.email.toLowerCase().includes(searchTerm) ||
+                    lead.phone.toLowerCase().includes(searchTerm) ||
+                    lead.institution.toLowerCase().includes(searchTerm)
+                );
+            });
+
+            displayLeads(filtered);
+        }
+
+        // Atualizar dados
+        function refreshLeads() {
+            loadLeads();
+            alert('Leads atualizados com sucesso!');
+        }
+
+        // Exportar para CSV
+        function exportToCSV() {
+            if (allLeads.length === 0) {
+                alert('Não há leads para exportar.');
+                return;
+            }
+
+            const headers = ['Data/Hora', 'Nome', 'E-mail', 'Telefone', 'Instituição', 'Origem'];
+            const rows = allLeads.map(lead => [
+                lead.timestamp,
+                lead.name,
+                lead.email,
+                lead.phone,
+                lead.institution,
+                lead.referrer || 'Direct'
+            ]);
+
+            const csv = [
+                headers.join(','),
+                ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+            ].join('\n');
+
+            downloadFile(csv, `neurohack_leads_${Date.now()}.csv`, 'text/csv');
+            alert(`${allLeads.length} leads exportados com sucesso!`);
+        }
+
+        // Exportar para JSON
+        function exportToJSON() {
+            if (allLeads.length === 0) {
+                alert('Não há leads para exportar.');
+                return;
+            }
+
+            const json = JSON.stringify(allLeads, null, 2);
+            downloadFile(json, `neurohack_leads_${Date.now()}.json`, 'application/json');
+            alert(`${allLeads.length} leads exportados com sucesso!`);
+        }
+
+        // Download de arquivo
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Limpar todos os leads
+        function clearAllLeads() {
+            if (!confirm(`Tem certeza que deseja APAGAR TODOS os ${allLeads.length} leads?\n\nEsta ação não pode ser desfeita!`)) {
+                return;
+            }
+
+            if (!confirm('ÚLTIMA CONFIRMAÇÃO: Todos os dados serão perdidos!')) {
+                return;
+            }
+
+            localStorage.removeItem('neurohack_leads');
+            allLeads = [];
+            displayLeads([]);
+            updateStats();
+            alert('Todos os leads foram removidos.');
+        }
+    </script>
+</body>
+</html>
+
