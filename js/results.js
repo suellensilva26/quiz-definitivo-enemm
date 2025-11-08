@@ -172,11 +172,11 @@ function showResult(score) {
                     <h3 class="video-title">Veja em 2 minutos como o NeuroHack reprograma seu cérebro para o ENEM</h3>
                 </div>
                 <div class="video-wrapper">
-                    <iframe 
-                        src="https://player.vimeo.com/video/1134809671?h=8b61186ebe&title=0&byline=0&portrait=0"
+                    <iframe
+                        src="https://www.youtube.com/embed/srNOjG5RQD8?rel=0&modestbranding=1&playsinline=1"
                         title="NeuroHack ENEM"
                         frameborder="0"
-                        allow="autoplay; fullscreen; picture-in-picture"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
                     </iframe>
                 </div>

@@ -205,7 +205,7 @@ Desconto: 67% OFF
 ### Tela de Resultado
 - ✅ 4 perfis neurológicos personalizados
 - ✅ Gráfico circular de risco
-- ✅ Vídeo explicativo (Vimeo)
+- ✅ Vídeo explicativo (YouTube)
 - ✅ Lista expandida de benefícios (10+ itens)
 - ✅ Timer de urgência (2 horas)
 - ✅ Cupom surpresa (15 min)
@@ -213,7 +213,7 @@ Desconto: 67% OFF
 - ✅ CTA destacado com call-to-action
 
 ### Vídeo Explicativo
-- ✅ Player Vimeo integrado
+- ✅ Player YouTube integrado
 - ✅ Arco dourado ao redor
 - ✅ Badge "NeuroHack Explicado"
 - ✅ Fullscreen e Picture-in-Picture

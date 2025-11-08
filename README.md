@@ -33,6 +33,11 @@ Quiz interativo mobile-first que identifica o perfil neurológico de vestibuland
    ```
 3. Acesse `http://localhost:8000`
 
+## 🛠️ Deploy Automático
+
+- **GitHub Pages** – já configurado via workflow [`deploy.yml`](.github/workflows/deploy.yml). Detalhes em [`DEPLOY_GITHUB.md`](DEPLOY_GITHUB.md).
+- **Vercel** – workflow [`vercel-deploy.yml`](.github/workflows/vercel-deploy.yml) pronto. Configure os secrets `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `VERCEL_TOKEN` e siga [`DEPLOY_VERCEL.md`](DEPLOY_VERCEL.md).
+
 ## 📊 Sistema de Captura de Leads
 
 O quiz agora captura dados dos usuários **antes** de iniciar:
